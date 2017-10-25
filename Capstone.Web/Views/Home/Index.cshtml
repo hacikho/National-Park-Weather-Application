@@ -10,7 +10,11 @@
     @foreach(var item in Model)
     {
         <ul>
-            <li><img src="@Url.Content("~/Content/img/park/" + item.ParkCode + ".jpg")" /></li>
+            <li>
+                <a href="@Url.Action("Detail", "Home", new { parkCode = item.ParkCode})">
+                    <img src="@Url.Content("~/Content/img/park/" + item.ParkCode + ".jpg")" />        
+                 </a>
+            </li>
             <li>@item.Name</li>
             <li>@item.State</li>
             <li>@item.Description</li>

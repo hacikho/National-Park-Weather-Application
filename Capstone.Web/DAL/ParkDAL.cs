@@ -12,6 +12,7 @@ namespace Capstone.Web.DAL
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["npgeek"].ConnectionString;
         const string SQL_GetAllParks = "Select * from park";
+        const string SQL_GetSinglePark = "Select * from park Where park.parkCode = @parkcode";
 
         public List<Park> GetAllParks()
         {
@@ -55,6 +56,48 @@ namespace Capstone.Web.DAL
                 throw;
             }
 
+        }
+
+        public Park GetSinglePark(string parkcode)
+        {
+            Park np = null;
+
+            try
+            {
+                using(SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(SQL_GetAllParks, conn);
+                    cmd.Parameters.AddWithValue("@parkcode", parkcode);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Park p = new Park();
+                        p.ParkCode = Convert.ToString(reader["parkCode"]);
+                        p.Name = Convert.ToString(reader["parkName"]);
+                        p.State = Convert.ToString(reader["state"]);
+                        p.Acreage = Convert.ToInt32(reader["acreage"]);
+                        p.ElevationInFeet = Convert.ToInt32(reader["elevationInFeet"]);
+                        p.MilesOfTrail = Convert.ToInt32(reader["milesOfTrail"]);
+                        p.NumberOfCampsites = Convert.ToInt32(reader["numberOfCampsites"]);
+                        p.Climate = Convert.ToString(reader["climate"]);
+                        p.YearFounded = Convert.ToInt32(reader["yearFounded"]);
+                        p.AnnualVisitorCount = Convert.ToInt32(reader["annualVisitorCount"]);
+                        p.InspirationalQuote = Convert.ToString(reader["inspirationalQuote"]);
+                        p.InspirationalQuoteSource = Convert.ToString(reader["inspirationalQuoteSource"]);
+                        p.Description = Convert.ToString(reader["parkDescription"]);
+                        p.EntryFee = Convert.ToInt32(reader["entryFee"]);
+                        p.NumberOfAnimalSpecies = Convert.ToInt32(reader["numberOfAnimalSpecies"]);
+                        np = p;
+                    }
+                }
+
+                return np;
+            }catch(SqlException ex)
+            {
+                throw;
+            }
         }
     }
 }

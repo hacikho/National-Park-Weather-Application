@@ -21,5 +21,17 @@ namespace Capstone.Web.Controllers
             var allParks = dal.GetAllParks();
             return View("Index", allParks);
         }
+
+        public ActionResult Detail(string parkCode = "")
+        {
+            var onePark = dal.GetSinglePark(parkCode);
+
+            if(onePark == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View("Detail", onePark);
+        }
     }
 }
