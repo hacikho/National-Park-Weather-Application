@@ -1,4 +1,5 @@
 ﻿using Capstone.Web.DAL;
+using Capstone.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,14 +25,23 @@ namespace Capstone.Web.Controllers
 
         public ActionResult Detail(string parkCode = "")
         {
-            var onePark = dal.GetSinglePark(parkCode);
+            Park onePark = new Park();
 
-            if(onePark == null)
+            onePark = dal.GetSinglePark(parkCode);
+            onePark.Weather = dal.GetAllWeather(parkCode);
+
+            if (onePark == null)
             {
                 return HttpNotFound();
             }
 
             return View("Detail", onePark);
         }
+        
+        public ActionResult TakeSurvey()
+        {
+            return View("TakeSurvey");
+        }
+  
     }
 }

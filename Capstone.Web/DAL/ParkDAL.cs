@@ -12,7 +12,10 @@ namespace Capstone.Web.DAL
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["npgeek"].ConnectionString;
         const string SQL_GetAllParks = "Select * from park";
-        const string SQL_GetSinglePark = "Select * from park Where park.parkCode = @parkcode";
+        const string SQL_GetSinglePark = "select * from park where park.parkCode = @parkCode";
+        const string SQL_GetAllWeather = "select park.*, weather.* from park Join weather on weather.parkCode = park.parkCode where weather.parkCode = @parkCode";
+
+
 
         public List<Park> GetAllParks()
         {
@@ -45,7 +48,7 @@ namespace Capstone.Web.DAL
                         p.NumberOfAnimalSpecies = Convert.ToInt32(reader["numberOfAnimalSpecies"]);
                         p.NumberOfCampsites = Convert.ToInt32(reader["numberOfCampsites"]);
                         p.YearFounded = Convert.ToInt32(reader["yearFounded"]);
-
+                        
                         output.Add(p);
                     }
                 }
@@ -68,7 +71,7 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(SQL_GetAllParks, conn);
-                    cmd.Parameters.AddWithValue("@parkcode", parkcode);
+                    cmd.Parameters.AddWithValue("@parkCode", parkcode);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -99,5 +102,41 @@ namespace Capstone.Web.DAL
                 throw;
             }
         }
+
+        public List<Weather> GetAllWeather(string parkcode)
+        {
+           List<Weather> weath = new List<Weather>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(SQL_GetAllWeather, conn);
+                    cmd.Parameters.AddWithValue("@parkCode", parkcode);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Weather p = new Weather();
+                        p.FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]);
+                        p.Low = Convert.ToInt32(reader["low"]);
+                        p.High = Convert.ToInt32(reader["high"]);
+                        p.Forecast = Convert.ToString(reader["forecast"]);
+
+                        weath.Add(p);
+                    }
+                }
+
+                return weath;
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+        }
+
+
     }
 }

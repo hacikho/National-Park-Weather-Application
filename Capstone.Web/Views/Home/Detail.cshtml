@@ -21,6 +21,14 @@
     <li>@Model.MilesOfTrail</li>
     <li>@Model.NumberOfAnimalSpecies</li>
     <li>@Model.NumberOfCampsites</li>
-   
+
+    @foreach(var item in Model.Weather)
+    {
+        <li>@item.Forecast</li>
+        <li>@item.High</li>
+        <li>@item.Low</li>
+        <li>@item.FiveDayForecastValue</li>
+    }
+
 </ul>
 

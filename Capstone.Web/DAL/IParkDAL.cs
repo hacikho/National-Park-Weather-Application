@@ -11,5 +11,6 @@ namespace Capstone.Web.DAL
     {
         List<Park> GetAllParks();
         Park GetSinglePark(string parkcode);
+        List<Weather> GetAllWeather(string parkcode);
     }
 }
