@@ -4,15 +4,26 @@
     ViewBag.Title = "SurveyResult";
 }
 
-<h2>SurveyResult</h2>
-<ul>
-@foreach (var item in Model)
-{
-    <li>
-        @item.ParkName 
-        @item.EmailAddress
-        @item.State
-        @item.ActivityLevel
-    </li>
+<h2>Top Rated National Parks</h2>
+<table border="1">
+    <tr>
+        <th></th>
+        <th>Park Name</th>
+        <th>Number of Votes</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><img src="@Url.Content("~/Content/img/park/" + item.ParkCode + ".jpg")" class="survey_result"/></td>
+            <td>@item.ParkName</td>
+            <td>@item.NumberOfSurvey</td>
+        </tr>
+
+        @*@item.NumberOfSurvey*@
+        @*@item.EmailAddress
+            @item.State
+            @item.ActivityLevel*@
+
     }
-</ul>
+</table>
+

@@ -15,8 +15,8 @@ namespace Capstone.Web.DAL
         const string SQL_GetSinglePark = "select * from park where park.parkCode = @parkCode";
         const string SQL_GetAllWeather = "select park.*, weather.* from park Join weather on weather.parkCode = park.parkCode where weather.parkCode = @parkCode";
         const string SQL_InsertSurvey = "Insert Into survey_result Values (@parkCode, @emailAddress, @state, @activityLevel)";
-        const string SQL_GetAllSurveyResult = "Select survey_result.*, park.parkName from survey_result join park on park.parkCode = survey_result.parkCode";
-
+        //const string SQL_GetAllSurveyResult = "Select survey_result.*, park.parkName from survey_result join park on park.parkCode = survey_result.parkCode";
+        const string SQL_GetAllSurveyResult= "select Count(survey_result.parkCode) as numberOfSurveys, park.parkName, park.parkCode from survey_result join park on park.parkCode = survey_result.parkCode group by park.parkName, park.parkCode order by numberOfSurveys desc";
 
 
         public List<Park> GetAllParks()
@@ -174,10 +174,11 @@ namespace Capstone.Web.DAL
                     {
                         Survey s = new Survey();
                         s.ParkCode = Convert.ToString(reader["parkCode"]);
-                        s.EmailAddress = Convert.ToString(reader["emailAddress"]);
-                        s.State = Convert.ToString(reader["state"]);
-                        s.ActivityLevel = Convert.ToString(reader["activityLevel"]);
+                        //s.EmailAddress = Convert.ToString(reader["emailAddress"]);
+                        //s.State = Convert.ToString(reader["state"]);
+                        //s.ActivityLevel = Convert.ToString(reader["activityLevel"]);
                         s.ParkName = Convert.ToString(reader["parkName"]);
+                        s.NumberOfSurvey = Convert.ToInt32(reader["numberOfSurveys"]);
                         output.Add(s);
                     }
                 }

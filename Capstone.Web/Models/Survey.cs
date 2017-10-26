@@ -14,6 +14,7 @@ namespace Capstone.Web.Models
         public string State { get; set; }
         public string ActivityLevel { get; set; }
         public string ParkName { get; set; }
+        public int NumberOfSurvey { get; set; }
 
 
         public List<SelectListItem> NationalParks
