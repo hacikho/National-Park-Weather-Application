@@ -126,7 +126,7 @@
     <Content Include="Content\img\park\ynp.jpg" />
     <Content Include="Content\img\park\ynp2.jpg" />
     <Content Include="Content\img\weather\cloudy.png" />
-    <Content Include="Content\img\weather\partlyCloudy.png" />
+    <Content Include="Content\img\weather\partly cloudy.png" />
     <Content Include="Content\img\weather\rain.png" />
     <Content Include="Content\img\weather\snow.png" />
     <Content Include="Content\img\weather\sunny.png" />

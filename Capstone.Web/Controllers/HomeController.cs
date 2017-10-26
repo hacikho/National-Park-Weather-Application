@@ -23,10 +23,11 @@ namespace Capstone.Web.Controllers
             return View("Index", allParks);
         }
 
-        public ActionResult Detail(string parkCode = "")
+        public ActionResult Detail(string parkCode, string choiceTemp)
         {
             Park onePark = new Park();
             WeatherChoice weathers = new WeatherChoice();
+            weathers.ChoiceTemp = choiceTemp;
 
             onePark = dal.GetSinglePark(parkCode);
             onePark.Weather = dal.GetAllWeather(parkCode);
@@ -35,11 +36,12 @@ namespace Capstone.Web.Controllers
             {
                 return HttpNotFound();
             }
+
             var tuple = new Tuple<Park, WeatherChoice>(onePark, weathers);
 
             return View("Detail", tuple);
         }
-        
+
         [HttpGet]
         public ActionResult TakeSurvey()
         {

@@ -72,7 +72,7 @@ namespace Capstone.Web.DAL
                 using(SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(SQL_GetAllParks, conn);
+                    SqlCommand cmd = new SqlCommand(SQL_GetSinglePark, conn);
                     cmd.Parameters.AddWithValue("@parkCode", parkcode);
                     SqlDataReader reader = cmd.ExecuteReader();
 

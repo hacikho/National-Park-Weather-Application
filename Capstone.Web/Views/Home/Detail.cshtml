@@ -1,42 +1,95 @@
 ﻿@using Capstone.Web.Models;
-@model Tuple<Park,WeatherChoice>
+@model Tuple<Park, WeatherChoice>
 @{
     ViewBag.Title = "Detail";
 }
 
-<h2>Detail</h2>
-<ul>
-    <li><img src="@Url.Content("~/Content/img/park/" + Model.Item1.ParkCode + ".jpg") " /></li>
-    <li>@Model.Item1.Name</li>
-    <li>@Model.Item1.State</li>
-    <li>@Model.Item1.YearFounded</li>
-    <li>@Model.Item1.Acreage</li>
-    <li>@Model.Item1.Climate</li>
-    <li>@Model.Item1.Description</li>
-    <li>@Model.Item1.ElevationInFeet</li>
-    <li>@Model.Item1.EntryFee</li>
-    <li>@Model.Item1.AnnualVisitorCount</li>
-    <li>@Model.Item1.InspirationalQuote</li>
-    <li>@Model.Item1.InspirationalQuoteSource</li>
-    <li>@Model.Item1.MilesOfTrail</li>
-    <li>@Model.Item1.NumberOfAnimalSpecies</li>
-    <li>@Model.Item1.NumberOfCampsites</li>
+<h2>@Model.Item1.Name</h2>
+<table>
+    <tr>
+        <td><img src="@Url.Content("~/Content/img/park/" + Model.Item1.ParkCode + ".jpg") " /></td>
+    </tr>
+    <tr>
+        <td>Located in: @Model.Item1.State</td>
+    </tr>
+    <tr>
+        <td>Founded: @Model.Item1.YearFounded</td>
+    </tr>
+    <tr>
+        <td>Acreage: @Model.Item1.Acreage sq feet</td>
+    </tr>
+    <tr>
+        <td>The park is mostly: @Model.Item1.Climate</td>
+    </tr>
+    <tr>
+        <td class="about-the-park">Alittle about the park:</td>
+    </tr>
+    <tr>
+        <td>@Model.Item1.Description</td>
+    </tr>
+    <tr>
+        <td><span class="title">Number of campsites:</span> @Model.Item1.NumberOfCampsites</td>
+    </tr>
+    <tr>
+        <td><span class="title">Fee:</span> @Model.Item1.EntryFee</td>
+    </tr>
+    <tr>
+        <td><span class="title">Total Elevation:</span> @Model.Item1.ElevationInFeet ft</td>
+    </tr>
+    <tr>
+        <td><span class="title">Miles of trails:</span>@Model.Item1.MilesOfTrail</td>
+    </tr>
+    <tr>
+        <td><span class="title">Number of animal species:</span>@Model.Item1.NumberOfAnimalSpecies</td>
+    </tr>
+    <tr>
+        <td><span class="title">Number of annual visitors:</span> @Model.Item1.AnnualVisitorCount</td>
+    </tr>
+    <tr>
+        <td>@Model.Item1.InspirationalQuote  -@Model.Item1.InspirationalQuoteSource</td>
+    </tr>
+</table>
 
-    <form action="@Url.Action("Detail", "Home")" method="get">
-        <div>
-            @Html.RadioButtonFor(m =>Model.Item2.ChoiceTemp, "Fahrenheit") Fahrenheit
-            @Html.RadioButtonFor(m => Model.Item2.ChoiceTemp, "Celcius") Celcius
-        </div>
-        <button>Submit</button>
 
-    </form>
-        @foreach(var item in Model.Item1.Weather)
+<form action="@Url.Action("Detail", "Home")" method="get">
+    <div>
+        @Html.RadioButton("ChoiceTemp", "Fahrenheit") Fahrenheit
+        @Html.RadioButton("ChoiceTemp", "Celcius") Celcius
+        @Html.Hidden("ParkCode", Model.Item1.ParkCode)
+    </div>
+    <button>Submit</button>
+</form>
+
+<table class="weather-table">
+    <caption>5 Day Forecast</caption>
+    @foreach (var item in Model.Item1.Weather)
     {
-        <li>@item.Forecast</li>
-        <li>@item.High</li>
-        <li>@item.Low</li>
-        <li>@item.FiveDayForecastValue</li>
-    }
+            <tr class="weather-row">
+                <td class="weather"><img src="@Url.Content("~/Content/img/weather/" + item.Forecast + ".png")" /> </td>
+            </tr>
+            <tr>
+                <td class="forecast text-center">@item.Forecast</td>
+            </tr>
+            <tr>
+                @if (Model.Item2.ChoiceTemp == "Celcius")
+                {
+                    <td>High: @((Math.Round(((item.High - 32) * .5556), 0)))</td>
+                    <td>Low: @((Math.Round(((item.Low - 32) * .5556), 0)))</td>
 
-</ul>
+                }
+                else
+                {
+                    <td>High: @item.High</td>
+                    <td>Low:@item.Low</td>
+                }
+            </tr>
+            <tr>
+                @if (item.Forecast == "snow")
+                {
+                    <td>It's going to snow, make sure you pack snowshoes</td>
+                }
+                
+            </tr>
+    }
+</table>
 
