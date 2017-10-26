@@ -1,0 +1,18 @@
+﻿@using Capstone.Web.Models;
+@model List<Survey>
+@{
+    ViewBag.Title = "SurveyResult";
+}
+
+<h2>SurveyResult</h2>
+<ul>
+@foreach (var item in Model)
+{
+    <li>
+        @item.ParkName 
+        @item.EmailAddress
+        @item.State
+        @item.ActivityLevel
+    </li>
+    }
+</ul>

@@ -1,28 +1,36 @@
 ﻿@using Capstone.Web.Models;
-@model Park
+@model Tuple<Park,WeatherChoice>
 @{
     ViewBag.Title = "Detail";
 }
 
 <h2>Detail</h2>
 <ul>
-    <li><img src="@Url.Content("~/Content/img/park/" + Model.ParkCode + ".jpg") " /></li>
-    <li>@Model.Name</li>
-    <li>@Model.State</li>
-    <li>@Model.YearFounded</li>
-    <li>@Model.Acreage</li>
-    <li>@Model.Climate</li>
-    <li>@Model.Description</li>
-    <li>@Model.ElevationInFeet</li>
-    <li>@Model.EntryFee</li>
-    <li>@Model.AnnualVisitorCount</li>
-    <li>@Model.InspirationalQuote</li>
-    <li>@Model.InspirationalQuoteSource</li>
-    <li>@Model.MilesOfTrail</li>
-    <li>@Model.NumberOfAnimalSpecies</li>
-    <li>@Model.NumberOfCampsites</li>
+    <li><img src="@Url.Content("~/Content/img/park/" + Model.Item1.ParkCode + ".jpg") " /></li>
+    <li>@Model.Item1.Name</li>
+    <li>@Model.Item1.State</li>
+    <li>@Model.Item1.YearFounded</li>
+    <li>@Model.Item1.Acreage</li>
+    <li>@Model.Item1.Climate</li>
+    <li>@Model.Item1.Description</li>
+    <li>@Model.Item1.ElevationInFeet</li>
+    <li>@Model.Item1.EntryFee</li>
+    <li>@Model.Item1.AnnualVisitorCount</li>
+    <li>@Model.Item1.InspirationalQuote</li>
+    <li>@Model.Item1.InspirationalQuoteSource</li>
+    <li>@Model.Item1.MilesOfTrail</li>
+    <li>@Model.Item1.NumberOfAnimalSpecies</li>
+    <li>@Model.Item1.NumberOfCampsites</li>
 
-    @foreach(var item in Model.Weather)
+    <form action="@Url.Action("Detail", "Home")" method="get">
+        <div>
+            @Html.RadioButtonFor(m =>Model.Item2.ChoiceTemp, "Fahrenheit") Fahrenheit
+            @Html.RadioButtonFor(m => Model.Item2.ChoiceTemp, "Celcius") Celcius
+        </div>
+        <button>Submit</button>
+
+    </form>
+        @foreach(var item in Model.Item1.Weather)
     {
         <li>@item.Forecast</li>
         <li>@item.High</li>

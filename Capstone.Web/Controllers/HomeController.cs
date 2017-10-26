@@ -26,6 +26,7 @@ namespace Capstone.Web.Controllers
         public ActionResult Detail(string parkCode = "")
         {
             Park onePark = new Park();
+            WeatherChoice weathers = new WeatherChoice();
 
             onePark = dal.GetSinglePark(parkCode);
             onePark.Weather = dal.GetAllWeather(parkCode);
@@ -34,13 +35,30 @@ namespace Capstone.Web.Controllers
             {
                 return HttpNotFound();
             }
+            var tuple = new Tuple<Park, WeatherChoice>(onePark, weathers);
 
-            return View("Detail", onePark);
+            return View("Detail", tuple);
         }
         
+        [HttpGet]
         public ActionResult TakeSurvey()
         {
-            return View("TakeSurvey");
+            Survey model = new Survey();
+            return View("TakeSurvey", model);
+        }
+
+        [HttpPost]
+        public ActionResult TakeSurvey(Survey completedSurvey)
+        {
+            dal.SaveSurvey(completedSurvey);
+            return RedirectToAction("SurveyResult");
+        }
+
+        [HttpGet]
+        public ActionResult SurveyResult()
+        {
+            var something = dal.GetAllSurveys();
+            return View("SurveyResult", something);
         }
   
     }
