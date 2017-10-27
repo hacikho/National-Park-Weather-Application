@@ -15,7 +15,40 @@ select,
 textarea {
     max-width: 280px;
 }
+/*///////FORMATTING FOR HOME PAGE///////*/
+.navbar-brand {
+    color: #556b2f !important;
+    font-family: 'Open Sans Condensed', sans-serif !important;
+}
 
+
+
+h2 {
+    font-size: 50px;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+    color: #556b2f;
+}
+
+.park-name {
+    font-family: 'Fascinate Inline', cursive;
+    font-size: 30px;
+}
+
+.main-picture img {
+    text-align: center;
+}
+
+.description {
+    font-size: 25px;
+    text-align: justify;
+}
+
+.location {
+    font-weight: bold;
+}
+
+/*///////FORMATTING FOR DETAIL PAGE///////*/
 .about-the-park {
     font-weight: bold;
     text-align: center;
@@ -36,7 +69,6 @@ textarea {
 .weather-table {
     width: 20%;
     max-height: 100px;
-    /*max-width: 100px;*/
 }
 
 .weather-body {
@@ -62,4 +94,42 @@ textarea {
 .survey_result {
     height: 100px;
     width: 100px;
+}
+
+
+/*///////FORMATTING FOR SURVEY PAGE///////*/
+
+
+#survey {
+    position: absolute;
+    max-height: 80%;
+    opacity: 0.4;
+}
+
+#test {
+    position: absolute;
+    display: inline-block;
+    z-index: 10;
+    padding-left: 25%;
+    padding-top: 10%;
+    font-weight: bold;
+}
+
+/*///////FORMATTING FOR RESULT SURVEY PAGE///////*/
+
+.row {
+    align-content: center;
+}
+
+.survey-number {
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif !important;
+font-size: 20px;
+
+}
+
+.btn-primary {
+    background-color: #556b2f;
+    border-color: #556b2f;
+    width: 100%;
 }

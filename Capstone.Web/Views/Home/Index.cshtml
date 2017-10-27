@@ -4,20 +4,23 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Welcome to The World's Best National Park Weather Forecast Application</h2>
 
 <div>
-    @foreach(var item in Model)
+    @foreach (var item in Model)
     {
-        <ul>
-            <li>
-                <a href="@Url.Action("Detail", "Home", new { parkCode = item.ParkCode})">
-                    <img src="@Url.Content("~/Content/img/park/" + item.ParkCode + ".jpg")" />        
-                 </a>
-            </li>
-            <li>@item.Name</li>
-            <li>@item.State</li>
-            <li>@item.Description</li>
-        </ul>
+        <table class="table table-hover">
+            <tr>
+                <td class="park-name" colspan="2"><a href="@Url.Action("Detail", "Home", new { parkCode = item.ParkCode })" style="color: black">@item.Name</a></td>
+            </tr>
+            <tr>
+                <td class="main-picture">
+                    <a href="@Url.Action("Detail", "Home", new { parkCode = item.ParkCode})">
+                        <img src="@Url.Content("~/Content/img/park/" + item.ParkCode + ".jpg")" />
+                    </a>
+                </td>
+                <td class="description">@item.Description <br /><span class="location">Location:</span> @item.State</td>
+            </tr>
+        </table>
     }
 </div>

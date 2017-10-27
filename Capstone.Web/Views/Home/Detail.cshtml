@@ -53,7 +53,7 @@
 
 <form action="@Url.Action("Detail", "Home")" method="get">
     <div>
-        @Html.RadioButton("ChoiceTemp", "Fahrenheit", isChecked:true) Fahrenheit
+        @Html.RadioButton("ChoiceTemp", "Fahrenheit", isChecked: true) Fahrenheit
         @Html.RadioButton("ChoiceTemp", "Celcius") Celcius
         @Html.Hidden("ParkCode", Model.Item1.ParkCode)
     </div>
@@ -64,32 +64,104 @@
     <caption>5 Day Forecast</caption>
     @foreach (var item in Model.Item1.Weather)
     {
-            <tr class="weather-row">
-                <td class="weather"><img src="@Url.Content("~/Content/img/weather/" + item.Forecast + ".png")" /> </td>
-            </tr>
-            <tr>
-                <td class="forecast text-center">@item.Forecast</td>
-            </tr>
-            <tr>
-                @if (Model.Item2.ChoiceTemp == "Celcius")
+        <tr class="weather-row">
+            <td class="weather"><img src="@Url.Content("~/Content/img/weather/" + item.Forecast + ".png")" /> </td>
+        </tr>
+        <tr>
+            <td class="forecast text-center">@item.Forecast</td>
+        </tr>
+        <tr>
+            @if (Model.Item2.ChoiceTemp == "Celcius")
                 {
-                    <td>High: @((Math.Round(((item.High - 32) * .5556), 0))) C°</td>
+                <td>High: @((Math.Round(((item.High - 32) * .5556), 0))) C°</td>
                     <td>Low: @((Math.Round(((item.Low - 32) * .5556), 0))) C°</td>
 
-                }
-                else
-                {
-                    <td>High: @item.High F°</td>
+            }
+            else
+            {
+                <td>High: @item.High F°</td>
                     <td>Low:@item.Low F°</td>
-                }
-            </tr>
+            }
+        </tr>
             <tr>
-                @if (item.Forecast == "snow")
+                @if (item.High > 75 && item.High - item.Low > 20)
                 {
-                    <td>It's going to snow, make sure you pack snowshoes</td>
+
+                    if (item.Forecast == "rain")
+                    {
+                        <td>Pack rain gear and wear waterproof shoes</td>
+                    }
+                    else if (item.Forecast == "thunderstorms")
+                    {
+                        <td>Seek shelter, avoid hiking on exposed ridges</td>
+                    }
+                    else if (item.Forecast == "sun")
+                    {
+                        <td>Pack sunblock</td>
+                    }
+                    <td>Wear breathable layers</td>
                 }
-                
+                else if (item.High > 75)
+                {
+                    if (item.Forecast == "rain")
+                    {
+                        <td>Pack rain gear and wear waterproof shoes</td>
+                    }
+                    else if (item.Forecast == "thunderstorms")
+                    {
+                        <td>Seek shelter, avoid hiking on exposed ridges</td>
+                    }
+                    else if (item.Forecast == "sun")
+                    {
+                        <td>Pack sunblock</td>
+                    }
+
+                    <td>Bring an extra gallon of water, It'll be hot!</td>
+                }
+                else if (item.High < 75 && item.High - item.Low > 20)
+                {
+
+                    if (item.Forecast == "rain")
+                    {
+                        <td>Pack rain gear and wear waterproof shoes</td>
+                    }
+                    else if (item.Forecast == "thunderstorms")
+                    {
+                        <td>Seek shelter, avoid hiking on exposed ridges</td>
+                    }
+                    else if (item.Forecast == "sun")
+                    {
+                        <td>Pack sunblock</td>
+                    }
+                    <td>Wear breathable layers</td>
+                }
+                else if (item.High < 75)
+                {
+                    if (item.Forecast == "rain")
+                    {
+                        <td>Pack rain gear and wear waterproof shoes</td>
+                    }
+                    else if (item.Forecast == "thunderstorms")
+                    {
+                        <td>Seek shelter, avoid hiking on exposed ridges</td>
+                    }
+                    else if (item.Forecast == "sun")
+                    {
+                        <td>Pack sunblock</td>
+                    }
+                    else if (item.Forecast == "snow")
+                    {
+                        <td>Make sure you pack snowshoes</td>
+                    }
+                }
+                else if (item.Low < 20)
+                {
+                    if (item.Forecast == "snow")
+                    {
+                        <td>Make sure you pack snowshoes</td>
+                    }
+                   <td>Danger if exposed to frigid temperatures</td>
+                }
             </tr>
     }
 </table>
-

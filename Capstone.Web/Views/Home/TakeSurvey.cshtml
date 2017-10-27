@@ -5,15 +5,20 @@
 }
 
 <h2>Take Survey</h2>
-<form action="@Url.Action("TakeSurvey", "Home")" method="post">
+
+<img id="survey" src="@Url.Content("~/Content/img/misc/surveyimg.jpg")" class="img-circle" />
+<form id="test" action="@Url.Action("TakeSurvey", "Home")" method="post">
     <div>
-        Park Name @Html.DropDownListFor(m => m.ParkCode, Model.NationalParks)<br />
-        Email: @Html.TextBoxFor(m => m.EmailAddress)<br />
-        State @Html.DropDownListFor(m => m.State, Model.States)<br />
-        Physical Activity Level @Html.DropDownListFor(m => m.ActivityLevel, Model.PhysicalActivityList)<br />
-        <button>Submit</button>
+        Park Name: @Html.DropDownListFor(m => m.ParkCode, Model.NationalParks, new { @class = "form-control" })
     </div>
+    <div>
+        Email @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+    </div>
+    <div>
+        State @Html.DropDownListFor(m => m.State, Model.States, new { @class = "form-control" })
+    </div>
+    <div>
+        Physical Activity Level @Html.DropDownListFor(m => m.ActivityLevel, Model.PhysicalActivityList, new { @class = "form-control" })
+    </div>
+    <button>Submit</button>
 </form>
-
-
-

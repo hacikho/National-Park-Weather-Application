@@ -4,26 +4,34 @@
     ViewBag.Title = "SurveyResult";
 }
 
-<h2>Top Rated National Parks</h2>
-<table border="1">
-    <tr>
-        <th></th>
-        <th>Park Name</th>
-        <th>Number of Votes</th>
-    </tr>
-    @foreach (var item in Model)
+<h2>Most Loved Park</h2>
+
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-sm-offset-4">
+        <div class="thumbnail">
+            <img src="@Url.Content("~/Content/img/park/" + Model[0].ParkCode + ".jpg")">
+            <div class="caption">
+                <h3>@Model[0].ParkName</h3>
+                <p class="survey-number">Total Votes: @Model[0].NumberOfSurvey</p>
+                <p><a href="TakeSurvey" class="btn btn-primary" role="button">Vote</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2>Other High Rated Parks</h2>
+<div class="row">
+    @for (int i = 1; i < Model.Count; i++)
     {
-        <tr>
-            <td><img src="@Url.Content("~/Content/img/park/" + item.ParkCode + ".jpg")" class="survey_result"/></td>
-            <td>@item.ParkName</td>
-            <td>@item.NumberOfSurvey</td>
-        </tr>
-
-        @*@item.NumberOfSurvey*@
-        @*@item.EmailAddress
-            @item.State
-            @item.ActivityLevel*@
-
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="@Url.Content("~/Content/img/park/" + Model[i].ParkCode + ".jpg")">
+                <div class="caption">
+                    <h3>@Model[i].ParkName</h3>
+                    <p class="survey-number">Total Votes: @Model[i].NumberOfSurvey</p>
+                    <p><a href="TakeSurvey" class="btn btn-primary" role="button">Vote</a></p>
+                </div>
+            </div>
+        </div>
     }
-</table>
-
+</div>
