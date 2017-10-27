@@ -53,7 +53,7 @@
 
 <form action="@Url.Action("Detail", "Home")" method="get">
     <div>
-        @Html.RadioButton("ChoiceTemp", "Fahrenheit") Fahrenheit
+        @Html.RadioButton("ChoiceTemp", "Fahrenheit", isChecked:true) Fahrenheit
         @Html.RadioButton("ChoiceTemp", "Celcius") Celcius
         @Html.Hidden("ParkCode", Model.Item1.ParkCode)
     </div>
@@ -73,14 +73,14 @@
             <tr>
                 @if (Model.Item2.ChoiceTemp == "Celcius")
                 {
-                    <td>High: @((Math.Round(((item.High - 32) * .5556), 0)))</td>
-                    <td>Low: @((Math.Round(((item.Low - 32) * .5556), 0)))</td>
+                    <td>High: @((Math.Round(((item.High - 32) * .5556), 0))) C°</td>
+                    <td>Low: @((Math.Round(((item.Low - 32) * .5556), 0))) C°</td>
 
                 }
                 else
                 {
-                    <td>High: @item.High</td>
-                    <td>Low:@item.Low</td>
+                    <td>High: @item.High F°</td>
+                    <td>Low:@item.Low F°</td>
                 }
             </tr>
             <tr>

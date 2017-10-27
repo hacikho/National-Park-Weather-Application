@@ -25,10 +25,15 @@ namespace Capstone.Web.Controllers
 
         public ActionResult Detail(string parkCode, string choiceTemp)
         {
+            if (!String.IsNullOrEmpty(choiceTemp))
+            {
+
+                Session["temperature"] = choiceTemp;
+            }
             Park onePark = new Park();
             WeatherChoice weathers = new WeatherChoice();
-            weathers.ChoiceTemp = choiceTemp;
 
+            weathers.ChoiceTemp = Session["temperature"] as string;
             onePark = dal.GetSinglePark(parkCode);
             onePark.Weather = dal.GetAllWeather(parkCode);
 
