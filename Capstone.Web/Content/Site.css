@@ -17,17 +17,21 @@ textarea {
 }
 /*///////FORMATTING FOR HOME PAGE///////*/
 .navbar-brand {
-    color: #556b2f !important;
-    font-family: 'Open Sans Condensed', sans-serif !important;
+    color: #1E311E !important;
+    background-color: #556b2f;
+    font-family: 'Permanent Marker', cursive;
 }
 
-
+.navbar.navbar-inverse {
+    background-color: #556b2f;
+    border-color: #556b2f;
+}
 
 h2 {
     font-size: 50px;
     font-family: 'Permanent Marker', cursive;
     text-align: center;
-    color: #556b2f;
+    color: #1E311E;
 }
 
 .park-name {
@@ -49,6 +53,43 @@ h2 {
 }
 
 /*///////FORMATTING FOR DETAIL PAGE///////*/
+.carousel-item {
+    height: 300px;
+    display: initial;
+}
+
+    .carousel-item img {
+        opacity: 0.4;
+        z-index: 1;
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
+    }
+
+.carousel-caption {
+    position: absolute;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+#detail-park {
+    font-size: 50px;
+    font-family: 'Permanent Marker', cursive;
+    color: #1E311E;
+    text-align: center;
+    text-shadow: 0.3em 0.3em 0.3em grey;
+    z-index: 10;
+}
+
+#detail-quote {
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
+    color: #1E311E;
+    text-align: center;
+    z-index: 10;
+}
+
 .about-the-park {
     font-weight: bold;
     text-align: center;
@@ -56,51 +97,29 @@ h2 {
 
 .title {
     font-weight: bold;
-    text-decoration-line: underline;
 }
 
-
-.forecast {
-    font-weight: bold;
-    font-size: 25px;
-    text-align: center
-}
-
-.weather-table {
-    width: 20%;
-    max-height: 100px;
-}
-
-.weather-body {
-    max-height: 100px;
-    max-width: 100px;
-}
-
-.weather-row {
+.extra {
     text-align: center;
 }
 
-.weather {
-    max-height: 100px;
-    max-width: 100px;
+.forecast {
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
 }
 
-    .weather img {
-        height: 100px;
-        width: 100px;
-    }
+.temp {
+    font-weight: bold;
+}
 
-
-.survey_result {
-    height: 100px;
-    width: 100px;
+.choice {
+    padding-top: 100%;
 }
 
 
-/*///////FORMATTING FOR SURVEY PAGE///////*/
-
-
-#survey {
+    /*///////FORMATTING FOR SURVEY PAGE///////*/
+    #survey {
     position: absolute;
     max-height: 80%;
     opacity: 0.4;
@@ -115,6 +134,7 @@ h2 {
     font-weight: bold;
 }
 
+
 /*///////FORMATTING FOR RESULT SURVEY PAGE///////*/
 
 .row {
@@ -124,12 +144,20 @@ h2 {
 .survey-number {
     text-align: center;
     font-family: 'Open Sans Condensed', sans-serif !important;
-font-size: 20px;
-
+    font-size: 20px;
 }
 
 .btn-primary {
     background-color: #556b2f;
     border-color: #556b2f;
     width: 100%;
+}
+
+.result-park-name {
+    text-align: center;
+}
+
+.survey_result {
+    height: 100px;
+    width: 100px;
 }

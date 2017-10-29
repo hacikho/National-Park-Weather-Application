@@ -4,12 +4,12 @@
     ViewBag.Title = "TakeSurvey";
 }
 
-<h2>Take Survey</h2>
+<h2 class="container-fluid">Take Survey</h2>
 
 <img id="survey" src="@Url.Content("~/Content/img/misc/surveyimg.jpg")" class="img-circle" />
 <form id="test" action="@Url.Action("TakeSurvey", "Home")" method="post">
     <div>
-        Park Name: @Html.DropDownListFor(m => m.ParkCode, Model.NationalParks, new { @class = "form-control" })
+        Park Name: @Html.DropDownListFor(m => m.ParkCode, Model.NationalParks, new { @class="form-control" })
     </div>
     <div>
         Email @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
