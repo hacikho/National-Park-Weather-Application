@@ -110,8 +110,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\background\background.png" />
     <Content Include="Content\img\misc\backpack.png" />
     <Content Include="Content\img\misc\backpack2.jpg" />
+    <Content Include="Content\img\background\foreground.png" />
+    <Content Include="Content\img\background\midground.png" />
     <Content Include="Content\img\misc\surveyimg.jpg" />
     <Content Include="Content\img\misc\geek.png" />
     <Content Include="Content\img\misc\logo.png" />

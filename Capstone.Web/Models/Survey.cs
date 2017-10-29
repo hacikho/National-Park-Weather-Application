@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,7 +11,10 @@ namespace Capstone.Web.Models
     {
         public int SurveryId { get; set; }
         public string ParkCode { get; set; }
+
+        [Required(ErrorMessage = "Enter your email")]
         public string EmailAddress { get; set; }
+
         public string State { get; set; }
         public string ActivityLevel { get; set; }
         public string ParkName { get; set; }

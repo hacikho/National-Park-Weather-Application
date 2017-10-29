@@ -16,6 +16,43 @@ textarea {
     max-width: 280px;
 }
 /*///////FORMATTING FOR HOME PAGE///////*/
+body {
+    background: url(img/background/background.png) repeat 5% 5%;
+    
+}
+
+#midground {
+    background: url(img/background/midground.png) repeat 20% 20%;
+    /*position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 997;*/
+    animation: animatedBackground 60s linear infinite
+}
+
+#foreground {
+    background: url(img/background/foreground.png) repeat 90% 110%;
+    /*position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 998;*/
+    animation: animatedBackground 60s linear infinite
+}
+
+@keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 100% 0;
+    }
+}
+
 .navbar-brand {
     color: #1E311E !important;
     background-color: #556b2f;
@@ -31,12 +68,29 @@ h2 {
     font-size: 50px;
     font-family: 'Permanent Marker', cursive;
     text-align: center;
-    color: #1E311E;
+    color: white;
+        /*#1E311E;*/
+}
+
+.information{
+    color: white;
+}
+
+.information:hover {
+    color: grey;
 }
 
 .park-name {
     font-family: 'Fascinate Inline', cursive;
     font-size: 30px;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: grey;
 }
 
 .main-picture img {
@@ -118,20 +172,22 @@ h2 {
 }
 
 
-    /*///////FORMATTING FOR SURVEY PAGE///////*/
-    #survey {
+/*///////FORMATTING FOR SURVEY PAGE///////*/
+#survey {
     position: absolute;
     max-height: 80%;
     opacity: 0.4;
+    z-index: 1000;
 }
 
 #test {
     position: absolute;
     display: inline-block;
-    z-index: 10;
+    z-index: 1001;
     padding-left: 25%;
     padding-top: 10%;
     font-weight: bold;
+    color: white;
 }
 
 

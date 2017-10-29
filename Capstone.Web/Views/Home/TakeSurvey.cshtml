@@ -12,7 +12,8 @@
         Park Name: @Html.DropDownListFor(m => m.ParkCode, Model.NationalParks, new { @class="form-control" })
     </div>
     <div>
-        Email @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+        Email @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", placeholder = "abc@xyz.com" })
+        @Html.ValidationMessageFor(m => m.EmailAddress)
     </div>
     <div>
         State @Html.DropDownListFor(m => m.State, Model.States, new { @class = "form-control" })
