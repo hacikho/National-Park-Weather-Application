@@ -9,7 +9,7 @@
 <div class="information">
     @foreach (var item in Model)
     {
-        <table class="table table-hover">
+        <table class="table">
             <tr>
                 <td class="park-name" colspan="2"><a href="@Url.Action("Detail", "Home", new { parkCode = item.ParkCode })">@item.Name</a></td>
             </tr>

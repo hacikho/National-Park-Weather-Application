@@ -54,7 +54,7 @@ body {
 }
 
 .navbar-brand {
-    color: #1E311E !important;
+    color: white !important;
     background-color: #556b2f;
     font-family: 'Permanent Marker', cursive;
 }
@@ -68,12 +68,12 @@ h2 {
     font-size: 50px;
     font-family: 'Permanent Marker', cursive;
     text-align: center;
-    color: white;
+    color: #556b2f;
         /*#1E311E;*/
 }
 
 .information{
-    color: white;
+    color: #556b2f;
 }
 
 .information:hover {
@@ -85,8 +85,12 @@ h2 {
     font-size: 30px;
 }
 
+.body-content{
+   background-color: white;
+   opacity: .9;
+}
 a {
-    color: white;
+    color: black;
 }
 
 a:hover {
@@ -173,7 +177,7 @@ a:hover {
 }
 
 .table-condensed {
-    color: white;
+    color: #556b2f;
 }
 /*///////FORMATTING FOR SURVEY PAGE///////*/
 #survey {
@@ -193,9 +197,7 @@ a:hover {
     color: white;
 }
 
-
 /*///////FORMATTING FOR RESULT SURVEY PAGE///////*/
-
 .row {
     align-content: center;
 }
